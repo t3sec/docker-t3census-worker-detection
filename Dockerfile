@@ -23,6 +23,7 @@ RUN /tmp/install-composer.sh
 ADD ./install-sourcecode.sh /tmp/install-sourcecode.sh
 RUN chmod +x /tmp/install-sourcecode.sh
 RUN /tmp/install-sourcecode.sh
+RUN /bin/sed -i.bak s/127.0.0.1/gearman/g /root/t3census-worker-detector/worker/Typo3HostDetectorWorker.php
 
 ADD ./gearmanworker.ini /etc/supervisord.d/gearmanworker.ini
 VOLUME ["/gearman"]
